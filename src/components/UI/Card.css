@@ -37,9 +37,9 @@
 .card-image {
   overflow: hidden;
 }
-img {
+.card-image img {
   transition: 0.8s all ease-in-out;
 }
-img:hover {
+.card-image img:hover {
   transform: scale(1.5);
 }

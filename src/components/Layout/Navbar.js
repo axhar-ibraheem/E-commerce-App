@@ -1,20 +1,20 @@
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav>
       <ul className="navbar">
         <li className="nav-links">
-          <a href="#">Home</a>
+          <a href="#Home">Home</a>
         </li>
         <li className="nav-links">
-          <a href="#">Store</a>
+          <a href="#Store">Store</a>
         </li>
         <li className="nav-links">
-          <a href="#">About</a>
+          <a href="#About">About</a>
         </li>
-        <a className="cartstore" href="#">
-          Cart
+        <a onClick={props.onShow} className="cartstore" href="#Cart">
+          Cart <span> 0</span>
         </a>
       </ul>
     </nav>

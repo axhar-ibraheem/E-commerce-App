@@ -1,0 +1,37 @@
+.footer {
+  background: gray;
+  max-height: max-content;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-icons {
+  height: 100%;
+  margin-top: 0.7rem;
+  display: flex;
+  gap: 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.youtube {
+  color: rgb(185, 0, 0);
+}
+.spotify {
+  color: rgb(81, 255, 142);
+}
+.facebook {
+  color: #133b90;
+}
+@media screen and (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .footer-icons {
+    margin: 0;
+  }
+}

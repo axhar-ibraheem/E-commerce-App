@@ -1,0 +1,40 @@
+.navbar {
+  max-height: max-content;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.5rem;
+  background: black;
+  width: 100%;
+  z-index: 2;
+  gap: 1rem;
+}
+.nav-links a {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+}
+.cartstore {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: rgb(74, 15, 147);
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  color: white;
+}
+@media screen and (min-width: 768px) {
+  .navbar {
+    justify-content: center;
+    gap: 2rem;
+  }
+  .nav-links a {
+    font-size: 1.5rem;
+  }
+}

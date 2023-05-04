@@ -1,0 +1,19 @@
+.banner {
+  width: 100%;
+  max-height: max-content;
+  background: gray;
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  color: white;
+  text-align: center;
+}
+.banner h1 {
+  font-size: 3rem;
+}
+@media screen and (min-width: 768px) {
+  .banner h1 {
+    font-size: 6rem;
+  }
+}

@@ -1,0 +1,45 @@
+.merch-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  text-transform: capitalize;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.Card-center {
+  margin: 2rem auto;
+  display: grid;
+  place-items: center;
+  max-width: 1170px;
+}
+
+.merch-btn {
+  margin-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.merch-btn button {
+  width: 7rem;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  text-transform: capitalize;
+  background: rgb(74, 15, 147);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid rgb(96, 52, 151);
+}
+.merch-btn button:hover {
+  background-color: rgba(255, 255, 255, 0.616);
+  color: rgb(0, 0, 0);
+}
+@media screen and (min-width: 768px) {
+  .Card-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+}

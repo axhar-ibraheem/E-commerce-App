@@ -1,0 +1,23 @@
+.music-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  text-transform: capitalize;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.Card-center {
+  margin: 2rem auto;
+  display: grid;
+  place-items: center;
+  max-width: 1170px;
+}
+@media screen and (min-width: 768px) {
+  .Card-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+}

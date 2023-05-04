@@ -6,11 +6,15 @@ const merchArr = [
     title: "T-shirt",
     price: 16.99,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Shirt.png",
+    quantity: 1,
+    id: 5,
   },
   {
     title: "Coffee Cup",
     price: 5.99,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    quantity: 1,
+    id: 6,
   },
 ];
 const SectionMerch = () => {
@@ -26,6 +30,8 @@ const SectionMerch = () => {
             title={item.title}
             image={item.imageUrl}
             price={item.price}
+            quantity={item.quantity}
+            id={item.id}
           />
         ))}
       </div>

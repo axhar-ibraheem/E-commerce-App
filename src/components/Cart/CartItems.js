@@ -3,15 +3,14 @@ import "./CartItems.css";
 const CartItems = (props) => {
   return (
     <div className="cart-item">
-      <div className="item-details column">
+      <div className="item-details ">
         <img className="prod-image" src={props.image} alt="product" />
-
         <span className="prod-title">{props.title}</span>
       </div>
-      <div className="prod-price column">
+      <div className="prod-price ">
         <span>${props.price}</span>
       </div>
-      <div className="item-quantity column">
+      <div className="item-quantity ">
         <span className="prod-quantity">{props.quantity}</span>
         <button className="remove-btn">Remove</button>
       </div>

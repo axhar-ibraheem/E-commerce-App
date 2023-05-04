@@ -5,6 +5,7 @@ import Footer from "./components/Layout/Footer";
 import Navbar from "./components/Layout/Navbar";
 import Cart from "./components/Cart/Cart";
 import { useState } from "react";
+import ProdContextProvider from "./store/prodContextProvider";
 const App = () => {
   const [showCart, setShowCart] = useState(false);
   const showCartHandler = () => {
@@ -13,8 +14,9 @@ const App = () => {
   const hideCartHandler = () => {
     setShowCart(false);
   };
+
   return (
-    <>
+    <ProdContextProvider>
       <header>
         <Navbar onShow={showCartHandler}></Navbar>
         <Header></Header>
@@ -23,7 +25,7 @@ const App = () => {
       <SectionMusic></SectionMusic>
       <SectionMerch></SectionMerch>
       <Footer></Footer>
-    </>
+    </ProdContextProvider>
   );
 };
 

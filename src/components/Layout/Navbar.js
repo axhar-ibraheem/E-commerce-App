@@ -1,6 +1,11 @@
 import "./Navbar.css";
+import ProdContext from "../../store/prodContext";
+import { useContext } from "react";
 
 const Navbar = (props) => {
+  const ctx = useContext(ProdContext);
+
+  const totalQuantity = ctx.products.length;
   return (
     <nav>
       <ul className="navbar">
@@ -14,7 +19,7 @@ const Navbar = (props) => {
           <a href="#About">About</a>
         </li>
         <a onClick={props.onShow} className="cartstore" href="#Cart">
-          Cart <span> 0</span>
+          Cart <span>{totalQuantity}</span>
         </a>
       </ul>
     </nav>

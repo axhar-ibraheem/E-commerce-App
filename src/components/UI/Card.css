@@ -5,7 +5,7 @@
 .cards {
   margin: 2rem 0;
   background: rgb(255, 255, 255);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
 }
 .card-info {

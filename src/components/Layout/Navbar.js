@@ -1,4 +1,5 @@
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 import ProdContext from "../../store/prodContext";
 import { useContext } from "react";
 
@@ -10,17 +11,17 @@ const Navbar = (props) => {
     <nav>
       <ul className="navbar">
         <li className="nav-links">
-          <a href="#Home">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li className="nav-links">
-          <a href="#Store">Store</a>
+          <Link to="/store">Store</Link>
         </li>
         <li className="nav-links">
-          <a href="#About">About</a>
+          <Link to="/about">About</Link>
         </li>
-        <a onClick={props.onShow} className="cartstore" href="#Cart">
+        {/* <Link onClick={props.onShow} className="cartstore" to="#Cart">
           Cart <span>{totalQuantity}</span>
-        </a>
+        </Link> */}
       </ul>
     </nav>
   );

@@ -1,11 +1,22 @@
-import Header from "./components/Layout/Header";
-import SectionMerch from "./components/Layout/SectionMerch";
-import SectionMusic from "./components/Layout/SectionMusic";
-import Footer from "./components/Layout/Footer";
-import Navbar from "./components/Layout/Navbar";
-import Cart from "./components/Cart/Cart";
 import { useState } from "react";
-import ProdContextProvider from "./store/prodContextProvider";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import RootLayout from "./Pages/RootLayout";
+import Store from "./Pages/Store";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout></RootLayout>,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/store", element: <Store /> },
+      { path: "/about", element: <About></About> },
+    ],
+  },
+]);
+
 const App = () => {
   const [showCart, setShowCart] = useState(false);
   const showCartHandler = () => {
@@ -15,18 +26,7 @@ const App = () => {
     setShowCart(false);
   };
 
-  return (
-    <ProdContextProvider>
-      <header>
-        <Navbar onShow={showCartHandler}></Navbar>
-        <Header></Header>
-      </header>
-      {showCart && <Cart hideCart={hideCartHandler} />}
-      <SectionMusic></SectionMusic>
-      <SectionMerch></SectionMerch>
-      <Footer></Footer>
-    </ProdContextProvider>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 };
 
 export default App;

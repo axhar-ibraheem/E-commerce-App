@@ -1,0 +1,15 @@
+.cart-btn {
+  position: fixed;
+  top: 0;
+  right: 5%;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: rgb(74, 15, 147);
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  color: white;
+  border: none;
+  z-index: 3;
+  cursor: pointer;
+}

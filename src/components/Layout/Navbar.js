@@ -1,12 +1,6 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import ProdContext from "../../store/prodContext";
-import { useContext } from "react";
-
-const Navbar = (props) => {
-  const ctx = useContext(ProdContext);
-
-  const totalQuantity = ctx.products.length;
+const Navbar = () => {
   return (
     <nav>
       <ul className="navbar">
@@ -19,9 +13,6 @@ const Navbar = (props) => {
         <li className="nav-links">
           <Link to="/about">About</Link>
         </li>
-        {/* <Link onClick={props.onShow} className="cartstore" to="#Cart">
-          Cart <span>{totalQuantity}</span>
-        </Link> */}
       </ul>
     </nav>
   );

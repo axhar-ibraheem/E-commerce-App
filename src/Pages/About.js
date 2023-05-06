@@ -8,7 +8,7 @@ const About = () => {
       <Header />
       <div className="simple-text">
         <h1 className="about-title">About</h1>
-        <img src={require("../assets/images/image-6.jpg")} />
+        <img src={require("../assets/images/image-6.jpg")} alt="a watch" />
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt neque
           iusto assumenda provident similique? Omnis nam dolore quasi magni

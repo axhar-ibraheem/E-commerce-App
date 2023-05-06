@@ -66,7 +66,9 @@ const Home = () => {
               <li key={item.id} className="tour-item">
                 <span className="tour-date date-cell ">{item.tourDate}</span>
                 <span className="tour-place place-cell">{item.tourPlace}</span>
-                <span className="tour-title title-cell">{item.tourDetails}</span>
+                <span className="tour-title title-cell">
+                  {item.tourDetails}
+                </span>
                 <button className="tour-btn btn-cell">Buy Tickets</button>
               </li>
             ))}

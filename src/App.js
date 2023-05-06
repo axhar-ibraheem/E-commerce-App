@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
@@ -18,14 +17,6 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  const [showCart, setShowCart] = useState(false);
-  const showCartHandler = () => {
-    setShowCart(true);
-  };
-  const hideCartHandler = () => {
-    setShowCart(false);
-  };
-
   return <RouterProvider router={router}></RouterProvider>;
 };
 

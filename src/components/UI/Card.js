@@ -12,10 +12,10 @@ const Card = (props) => {
   return (
     <div className="cards">
       <div className="card-title">
-        <h2>{props.title}</h2>
+        <span>{props.title}</span>
       </div>
       <div className="card-image">
-        <img src={props.image} alt="" />
+        <img src={props.image} alt="a product" />
       </div>
       <div className="card-info">
         <p>${props.price}</p>

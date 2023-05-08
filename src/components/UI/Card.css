@@ -1,12 +1,14 @@
 .card-title {
   text-align: center;
   padding: 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 .cards {
   margin: 2rem 0;
-  background: rgb(255, 255, 255);
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  display: grid;
+  grid-template-rows: auto 300px auto;
 }
 .card-info {
   padding: 1rem 1rem;
@@ -14,11 +16,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid grey;
 }
 .card-info p {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .card-info button {
   width: 7rem;
@@ -39,6 +40,7 @@
 }
 .card-image img {
   transition: 0.8s all ease-in-out;
+  object-fit: contain;
 }
 .card-image img:hover {
   transform: scale(1.5);

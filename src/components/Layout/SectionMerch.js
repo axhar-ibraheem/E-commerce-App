@@ -19,11 +19,11 @@ const merchArr = [
 ];
 const SectionMerch = () => {
   return (
-    <div className="merch-section">
+    <div className="section">
       <div className="section-title">
         <h1>merch</h1>
       </div>
-      <div className="Card-center">
+      <div className="card-center">
         {merchArr.map((item) => (
           <Card
             key={Math.random()}
@@ -35,7 +35,7 @@ const SectionMerch = () => {
           />
         ))}
       </div>
-      <div className="merch-btn">
+      <div className="seeCart-btn">
         <button>See The Cart</button>
       </div>
     </div>

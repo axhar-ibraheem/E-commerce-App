@@ -1,5 +1,3 @@
-import "./CartItems.css";
-
 const CartItems = (props) => {
   return (
     <div className="cart-item">

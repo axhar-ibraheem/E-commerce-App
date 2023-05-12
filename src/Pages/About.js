@@ -1,41 +1,38 @@
-import Header from "../components/Layout/Header";
-import "./About.css";
-import Footer from "../components/Layout/Footer";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import aboutimage from "../assets/images/about.jpg";
 
 const About = () => {
   return (
     <>
-      <Header />
-      <div className="simple-text">
-        <h1 className="about-title">About</h1>
-        <img src={require("../assets/images/image-6.jpg")} alt="a watch" />
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt neque
-          iusto assumenda provident similique? Omnis nam dolore quasi magni
-          suscipit dolorem unde at ex, sequi nobis similique quam optio minus
-          expedita? Dolores minima ab quis voluptates. Ipsam aliquam quo magni
-          libero, dolores expedita? Assumenda a porro sit dignissimos, quisquam
-          necessitatibus dolor iste in tenetur temporibus cupiditate delectus
-          debitis eligendi doloremque unde quas ducimus officia fugiat quos.
-          Quisquam nisi accusantium veniam eligendi, et, delectus pariatur a
-          minus corrupti corporis, optio esse vitae perferendis. Aut consectetur
-          quibusdam eveniet facilis officiis ipsum sint, debitis aspernatur
-          vitae quos dolorum assumenda recusandae voluptatum architecto natus
-          autem esse similique accusamus dolore inventore non? Consectetur
-          officia praesentium ipsam voluptatum consequuntur est! Officiis quam
-          impedit consequatur veritatis delectus optio amet eos saepe eligendi
-          dolorum aut, voluptatibus facere adipisci et porro similique! Harum
-          suscipit expedita voluptas illo adipisci ratione dolor, amet
-          necessitatibus minima unde omnis, recusandae nesciunt cumque aliquam!
-          Corrupti iure quia sed, accusantium magnam rem quos tempore
-          necessitatibus atque sint. Nostrum saepe esse facilis earum voluptas
-          nobis reiciendis minus quidem optio aperiam magnam obcaecati
-          reprehenderit illum, velit eveniet quaerat, expedita et ipsum atque
-          culpa ducimus necessitatibus incidunt animi. Dolore obcaecati sint
-          officiis sed rem, tempora eligendi iusto labore.
-        </p>
-      </div>
-      <Footer />
+      <section className=" mt-5">
+        <Container className=" py-auto ">
+          <Row className="align-items-center">
+            <Col md={6}>
+              <div className="text-center py-4">
+                <h1>
+                  About <span className="text-info">Us</span>{" "}
+                </h1>
+                <i className="bi bi-person fs-1 display-1 text-warning"></i>
+                <p className="w-75 mx-auto">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Explicabo maxime iste deleniti cumque voluptas nobis ex iusto,
+                  necessitatibus tempore dolorum tempora veritatis voluptatem
+                  facere aperiam perferendis quos, praesentium nemo molestiae
+                  ducimus aliquid minus voluptate ipsam itaque. Nostrum,
+                  incidunt odit? Quis velit tenetur totam mollitia dolores!
+                  Quasi itaque nisi quo alias.
+                </p>
+                <Button variant="outline-info" className="fw-bold mt-3">
+                  See More..
+                </Button>
+              </div>
+            </Col>
+            <Col md={6}>
+              <img src={aboutimage} className="d-block w-100" alt="" />
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </>
   );
 };

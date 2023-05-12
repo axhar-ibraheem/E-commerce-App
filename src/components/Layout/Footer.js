@@ -1,4 +1,3 @@
-import "./Footer.css";
 import { GrFacebook } from "react-icons/gr";
 import { GrYoutube } from "react-icons/gr";
 import { GrSpotify } from "react-icons/gr";

@@ -1,6 +1,5 @@
 import Header from "../components/Layout/Header";
-import SectionMusic from "../components/Layout/SectionMusic";
-import SectionMerch from "../components/Layout/SectionMerch";
+import Products from "../components/Layout/Products";
 import Footer from "../components/Layout/Footer";
 import CartButton from "../components/UI/CartButton";
 import ProdContextProvider from "../store/prodContextProvider";
@@ -20,11 +19,8 @@ const Store = () => {
     <>
       <ProdContextProvider>
         <Header />
-        <CartButton onShow={showCartHandler}></CartButton>
         {showCart && <Cart hideCart={hideCartHandler} />}
-        <SectionMusic />
-        <SectionMerch />
-        <Footer />
+        <Products />
       </ProdContextProvider>
     </>
   );

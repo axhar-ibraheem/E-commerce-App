@@ -1,6 +1,5 @@
 import Footer from "../components/Layout/Footer";
 import { BsPlayCircle } from "react-icons/bs";
-import "./Home.css";
 
 const tourItems = [
   {

@@ -1,4 +1,3 @@
-import "./CartButton.css";
 import ProdContext from "../../store/prodContext";
 import { useContext } from "react";
 

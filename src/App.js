@@ -8,6 +8,7 @@ import { useState, useContext } from "react";
 import Cart from "./components/Cart/Cart";
 import Products from "./components/Layout/Products";
 import ProdContext from "./store/prodContext";
+import Auth from "./Pages/Auth";
 
 const App = () => {
   const [showCart, setShowCart] = useState(false);
@@ -30,17 +31,20 @@ const App = () => {
         <Route path="/home" exact>
           <Home></Home>
         </Route>
-        {ctx.isLoggedIn && (
-          <Route path="/products" exact>
-            <Products></Products>
-          </Route>
-        )}
+
+        <Route path="/products" exact>
+          {ctx.isLoggedIn && <Products></Products>}
+          {!ctx.isLoggedIn && <Redirect to="/auth"></Redirect>}
+        </Route>
 
         <Route path="/about">
           <About></About>
         </Route>
         <Route path="/contact">
           <ContactUs></ContactUs>
+        </Route>
+        <Route path="/auth">
+          <Auth></Auth>
         </Route>
         {ctx.isLoggedIn && (
           <Route path="/products/:prodId">

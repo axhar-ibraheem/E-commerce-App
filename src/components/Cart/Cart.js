@@ -1,40 +1,75 @@
 import CartItems from "./CartItems";
 import ProdContext from "../../store/prodContext";
 import { useContext } from "react";
-
+import { Card, Button, Row, Col } from "react-bootstrap";
 const Cart = (props) => {
   const ctx = useContext(ProdContext);
-
   return (
-    <div className="cart-container">
-      <h1 className="cart-title">Cart</h1>
-      <button onClick={props.hideCart} className="cancel-btn">
-        X
-      </button>
-      <div className="cart-info">
-        <span className="item">ITEM</span>
-        <span className="price">PRICE</span>
-        <span className="quantity">QUANTITY</span>
-      </div>
-      <div className="cartItems">
+    <Card
+      className="position-absolute cart end-0 me-3 pb-3 overflow-auto"
+      style={{ width: "25rem", height: "80vh" }}
+    >
+      <Card.Body>
+        <div className="w-100 text-end">
+          <Button
+            variant="danger"
+            size="sm"
+            className="mx-auto"
+            onClick={props.onHide}
+          >
+            X
+          </Button>
+        </div>
+
+        <Card.Header className="text-center mt-4 fw-bolder fs-5 rounded mb-3">
+          Your Cart <i className="bi bi-cart4 text-warning"></i>
+        </Card.Header>
+
+        <Row className="mb-3 justify-content-center">
+          <Col className="">
+            <h5 className="text-center fw-bold">Item</h5>
+          </Col>
+
+          <Col>
+            <h5 className=" text-center fw-bold">Price</h5>
+          </Col>
+          <Col>
+            <h5 className="fw-bold">Quantity</h5>
+          </Col>
+        </Row>
+
         {ctx.products.map((item) => (
           <CartItems
-            key={Math.random()}
-            image={item.image}
             title={item.title}
             price={item.price}
             quantity={item.quantity}
+            image={item.image}
+            id={item.id}
+            key={item.id}
           />
         ))}
-      </div>
-      <div className="total-amount">
-        <span>Total </span>
-        <span>${ctx.totalAmount.toFixed(2)}</span>
-      </div>
-      <div className="purchase-btn">
-        <button>purchase</button>
-      </div>
-    </div>
+
+        <div className=" d-flex mt-4">
+          <h5 className="fw-bold ">Total Amount</h5>{" "}
+          <h5 className="fw-bold ms-auto me-2">
+            ${ctx.totalAmount.toFixed(2)}
+          </h5>
+        </div>
+        <div className="text-center">
+          {ctx.products.length > 0 ? (
+            <Button
+              onClick={() => alert("Your order is Placed")}
+              variant="info"
+              className="fw-bold mt-3"
+            >
+              Place Order
+            </Button>
+          ) : (
+            <p className="text-dark pt-5 fw-bolder">Your Cart Is Empty</p>
+          )}
+        </div>
+      </Card.Body>
+    </Card>
   );
 };
 

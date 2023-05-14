@@ -1,5 +1,8 @@
 import Footer from "../components/Layout/Footer";
 import { BsPlayCircle } from "react-icons/bs";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import backGroundImage from "../assets/images/home.jpg";
+import { Link } from "react-router-dom";
 
 const tourItems = [
   {
@@ -43,38 +46,44 @@ const tourItems = [
 const Home = () => {
   return (
     <>
-      <div className="container">
-        <div className="content">
-          <h1 className="content-title">The Generics</h1>
-
-          <button className="content-btn">get our latest album</button>
-
-          <div>
-            <BsPlayCircle className="play-icon" />
-          </div>
-        </div>
-      </div>
-      <div className="tour-container">
-        <div className="tour-content">
-          <div className="tour-heading">
-            <h1>Tours</h1>
-          </div>
-
-          <ul>
-            {tourItems.map((item) => (
-              <li key={item.id} className="tour-item">
-                <span className="tour-date date-cell ">{item.tourDate}</span>
-                <span className="tour-place place-cell">{item.tourPlace}</span>
-                <span className="tour-title title-cell">
-                  {item.tourDetails}
+      <section className="pb-5">
+        <Container>
+          <Row className="justify-content-center align-items-center  mt-5">
+            <Col lg={6}>
+              <div className="text-center  pt-5">
+                <h1>
+                  Our <span className="text-warning fw-bold">Store</span>{" "}
+                </h1>
+                <p className="w-50 mx-auto py-2">
+                  Shop the latest trends and must-have items from the comfort of
+                  your own home. Our online store offers everything you need to
+                  elevate your style and simplify your life.
+                </p>
+                <span className="fst-italic fs-4 fw-bolder text-info">
+                  Ultraright Features
                 </span>
-                <button className="tour-btn btn-cell">Buy Tickets</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <Footer />
+                {"   "}
+                <span className="fst-italic fs-4 fw-bolder text-warning">
+                  Ultraright Pricetag
+                </span>
+              </div>
+            </Col>
+            <Col lg={6}>
+              <img className="w-100 bg-danger" src={backGroundImage} alt="" />
+            </Col>
+          </Row>
+          <div className=" d-flex justify-content-center">
+            <Button
+              as={Link}
+              to="/products"
+              variant="info"
+              className="fw-bolder px-4 border"
+            >
+              Shop Now
+            </Button>
+          </div>
+        </Container>
+      </section>
     </>
   );
 };

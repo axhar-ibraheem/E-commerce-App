@@ -1,45 +1,57 @@
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import Store from "./Pages/Store";
 import ContactUs from "./Pages/ContactUs";
-import { Route, Switch } from "react-router-dom/cjs/react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom/cjs/react-router-dom";
 import Mainnav from "./components/Layout/Mainnav";
 import ProductDetail from "./Pages/ProductDetail";
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <RootLayout></RootLayout>,
-//     children: [
-//       { path: "/", element: <Home /> },
-//       { path: "/store", element: <Store /> },
-//       { path: "/about", element: <About></About> },
-//       { path: "/contactus", element: <ContactUs></ContactUs> },
-//     ],
-//   },
-// ]);
+import { useState, useContext } from "react";
+import Cart from "./components/Cart/Cart";
+import Products from "./components/Layout/Products";
+import ProdContext from "./store/prodContext";
 
 const App = () => {
+  const [showCart, setShowCart] = useState(false);
+  const ctx = useContext(ProdContext);
+  const showCartHandler = () => {
+    setShowCart(true);
+  };
+  const hideCartHandler = () => {
+    setShowCart(false);
+  };
+
   return (
-    <div>
-      <Mainnav></Mainnav>
+    <>
+      <Mainnav onShow={showCartHandler}></Mainnav>
+      {showCart && <Cart onHide={hideCartHandler}></Cart>}
       <Switch>
         <Route path="/" exact>
+          <Redirect to="/home"></Redirect>
+        </Route>
+        <Route path="/home" exact>
           <Home></Home>
         </Route>
-        <Route path="/products" exact>
-          <Store></Store>
-        </Route>
+        {ctx.isLoggedIn && (
+          <Route path="/products" exact>
+            <Products></Products>
+          </Route>
+        )}
+
         <Route path="/about">
           <About></About>
         </Route>
         <Route path="/contact">
           <ContactUs></ContactUs>
         </Route>
-        <Route path="/products/:prodId">
-          <ProductDetail></ProductDetail>
+        {ctx.isLoggedIn && (
+          <Route path="/products/:prodId">
+            <ProductDetail></ProductDetail>
+          </Route>
+        )}
+        <Route path="*">
+          <Redirect to="/" />
         </Route>
       </Switch>
-    </div>
+    </>
   );
 };
 export default App;

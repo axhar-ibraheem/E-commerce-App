@@ -9,35 +9,35 @@ import { Container, Row } from "react-bootstrap";
 const productsArr = [
   {
     title: "Laptop",
-    price: 100,
+    price: 1299.99,
     imageUrl: laptop,
     quantity: 1,
     id: 1,
   },
   {
     title: "Watch",
-    price: 50,
+    price: 59.99,
     imageUrl: watch,
     quantity: 1,
     id: 2,
   },
   {
     title: "Shoes",
-    price: 70,
+    price: 69.99,
     imageUrl: shoe,
     quantity: 1,
     id: 3,
   },
   {
     title: "Headphone",
-    price: 100,
+    price: 29.99,
     imageUrl: headphone,
     quantity: 1,
     id: 4,
   },
   {
-    title: "item",
-    price: 100,
+    title: "Item",
+    price: 12.99,
     imageUrl: item,
     quantity: 1,
     id: 5,
@@ -48,9 +48,12 @@ const Products = () => {
   return (
     <section>
       <Container>
-        <div className="text-center py-3">
-          <h1>Products</h1>
+        <div className="text-center pb-4">
+          <h2 className="fs-1">
+            Our <span className="text-warning">Store</span>{" "}
+          </h2>
         </div>
+
         <Row className=" ">
           {productsArr.map((item) => (
             <Cards

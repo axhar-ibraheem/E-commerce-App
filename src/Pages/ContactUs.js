@@ -1,11 +1,12 @@
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
-import Footer from "../components/Layout/Footer";
+import { useHistory } from "react-router-dom";
 import { useRef } from "react";
 
 const ContactUs = () => {
   const nameRef = useRef();
   const emailRef = useRef();
   const phoneNoRef = useRef();
+  const history = useHistory();
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -24,7 +25,9 @@ const ContactUs = () => {
           body: JSON.stringify(details),
         }
       );
-      // console.log(response.ok);
+      if (response.ok) {
+        history.push("/products");
+      }
     } catch (e) {
       console.log(e.message);
     }
@@ -40,7 +43,10 @@ const ContactUs = () => {
                 Contact <span className="text-info">Us</span>{" "}
               </h1>
             </div>
-            <Col lg="4" className=" px-3 ">
+            <Col
+              lg="4"
+              className=" bg-gradient bg-info ps-4 py-5 rounded-start"
+            >
               <div className="">
                 <h3 className="fw-bold">Contact Information</h3>
                 <p>
@@ -50,19 +56,19 @@ const ContactUs = () => {
                 </p>
               </div>
               <div className="py-3">
-                <i className="bi bi-envelope-at-fill me-2 text-info"></i>
+                <i className="bi bi-envelope-at-fill me-2"></i>
                 <span>example@gmail.com</span>
               </div>
               <div className="py-3">
-                <i className="bi bi-telephone-fill me-2 text-info"></i>
+                <i className="bi bi-telephone-fill me-2"></i>
                 <span>0123456789</span>
               </div>
               <div className="py-3">
-                <i className="bi bi-geo-alt-fill me-2 text-info"></i>
-                <span>Old Plaza, Palladium Street, Kashmir.</span>
+                <i className="bi bi-geo-alt-fill me-2"></i>
+                <span>Old Plaza, Palladium Street, New Delhi.</span>
               </div>
             </Col>
-            <Col lg="6" className="p-3">
+            <Col lg="5" className="py-5 shadow">
               <Form onSubmit={onSubmitHandler}>
                 <Form.Group className="mb-3" controlId="formBasicUsername">
                   <Form.Label className="fw-bold">Name</Form.Label>
@@ -89,7 +95,11 @@ const ContactUs = () => {
                     placeholder="Phone Number"
                   />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button
+                  className="mt-3 px-4 fw-bold"
+                  variant="info"
+                  type="submit"
+                >
                   Submit
                 </Button>
               </Form>

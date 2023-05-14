@@ -15,27 +15,26 @@ import watch1 from "../assets/images/watch-1.jpg";
 import watch2 from "../assets/images/watch-2.jpg";
 import watch3 from "../assets/images/watch-3.jpg";
 import watch4 from "../assets/images/watch-4.jpg";
-
 import shoe1 from "../assets/images/shoes-1.jpg";
 import shoe2 from "../assets/images/shoes-2.jpg";
 import shoe3 from "../assets/images/shoes-3.jpg";
 import shoe4 from "../assets/images/shoes-4.jpg";
-
 import headphone1 from "../assets/images/headphone-1.jpg";
 import headphone2 from "../assets/images/headphone-2.jpg";
 import headphone3 from "../assets/images/headphone-3.jpg";
 import headphone4 from "../assets/images/headphone-4.jpg";
-
 import item1 from "../assets/images/image-1.jpg";
 import item2 from "../assets/images/image-2.jpg";
 import item3 from "../assets/images/image-3.jpg";
 import item4 from "../assets/images/image-4.jpg";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
+import ProdContext from "../store/prodContext";
 
 const productsArr = [
   {
     title: "Laptop",
     price: 1299.99,
+    image: laptop1,
     imageUrl: {
       image1: laptop1,
       image2: laptop2,
@@ -48,6 +47,7 @@ const productsArr = [
   {
     title: "Watch",
     price: 59.99,
+    image: watch1,
     imageUrl: {
       image1: watch1,
       image2: watch2,
@@ -60,6 +60,7 @@ const productsArr = [
   {
     title: "Shoes",
     price: 69.99,
+    image: shoe1,
     imageUrl: {
       image1: shoe1,
       image2: shoe2,
@@ -72,6 +73,7 @@ const productsArr = [
   {
     title: "Headphone",
     price: 22.99,
+    image: headphone1,
     imageUrl: {
       image1: headphone1,
       image2: headphone2,
@@ -82,8 +84,9 @@ const productsArr = [
     id: 4,
   },
   {
-    title: "item",
+    title: "Item",
     price: 12.99,
+    image: item2,
     imageUrl: {
       image1: item1,
       image2: item2,
@@ -98,6 +101,15 @@ const productsArr = [
 const ProductDetail = () => {
   const { prodId } = useParams();
   const filteredArray = productsArr.filter((item) => item.id === +prodId);
+  const [item] = filteredArray;
+
+  const ctx = useContext(ProdContext);
+
+  const placeOrderHandler = () => {
+    ctx.addToCart({
+      ...item,
+    });
+  };
 
   return (
     <section>
@@ -147,7 +159,12 @@ const ProductDetail = () => {
                   </p>
                 </div>
                 <div className=" mt-3">
-                  <Button className="px-4 fw-bold">Buy </Button>
+                  <Button
+                    onClick={placeOrderHandler}
+                    className="px-4 fw-bold btn-info"
+                  >
+                    Add To Cart
+                  </Button>
                   <span className="fs-4 fw-bold ms-4">${item.price}</span>
                 </div>
               </Col>
@@ -159,8 +176,8 @@ const ProductDetail = () => {
               <div className="mb-3">
                 <h4>Customer Reviews</h4>
               </div>
-              {Array.from({ length: 5 }).map((item) => (
-                <ListGroup.Item key={Math.random()}>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <ListGroup.Item key={index}>
                   <span>
                     <i className="bi bi-star-fill"></i>
                     <i className="bi bi-star-fill"></i>

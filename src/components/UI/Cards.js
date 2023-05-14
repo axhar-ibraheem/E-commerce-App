@@ -5,7 +5,6 @@ import { Card, Button, Col } from "react-bootstrap";
 
 const Cards = (props) => {
   const ctx = useContext(ProdContext);
-
   const addItemToCart = () => {
     ctx.addToCart({
       ...props,
@@ -22,15 +21,19 @@ const Cards = (props) => {
           <Card.Text>
             Some quick example text to build on the card title.
           </Card.Text>
-          <div className="d-flex justify-content-between">
-            <Card.Title>{props.title}</Card.Title>
+          <div className="d-flex justify-content-between align-items-center mb-2">
+            <Card.Title className="fw-bold m-0">{props.title}</Card.Title>
             <div>
-              <span>${props.price}</span>
+              <span className="fw-bold fs-5">${props.price}</span>
             </div>
           </div>
 
-          <Button variant="primary" className="px-4 fw-bold mt-1">
-            Buy{" "}
+          <Button
+            onClick={addItemToCart}
+            variant="info"
+            className="px-3 fw-bold mt-1"
+          >
+            Add to Cart{" "}
           </Button>
         </Card.Body>
       </Card>

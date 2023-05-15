@@ -5,10 +5,34 @@ import { Card, Button, Col } from "react-bootstrap";
 
 const Cards = (props) => {
   const ctx = useContext(ProdContext);
-  const addItemToCart = () => {
-    ctx.addToCart({
-      ...props,
-    });
+  const useremail = ctx.email.replace(/[@.]/g, "");
+
+  const addItemToCart = async () => {
+    const response = await fetch(
+      `https://crudcrud.com/api/${ctx.crudApiEndPoint}/cart${useremail}`,
+      {
+        method: "POST",
+        cors: "no-cors",
+        body: JSON.stringify({
+          title: props.title,
+          price: props.price,
+          quantity: props.quantity,
+          id: props.id,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    if (response.ok) {
+      ctx.addToCart({
+        ...data,
+      });
+    } else {
+      const error = data.error.message;
+      alert(error);
+    }
   };
   return (
     <Col md="6" className="mb-4">

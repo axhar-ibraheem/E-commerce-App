@@ -2,10 +2,6 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import aboutimage from "../assets/images/about.jpg";
 import { useHistory, useLocation } from "react-router-dom/cjs/react-router-dom";
 const About = () => {
-  const history = useHistory();
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-
   return (
     <>
       <section className=" mt-5">

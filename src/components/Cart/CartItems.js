@@ -17,10 +17,9 @@ const CartItems = (props) => {
   return (
     <Row className="mb-3 overflow-auto align-items-center">
       <Col className="">
-        <img className="w-100" src={props.image} alt="product" />
-        <span className="">{props.title}</span>
+        <span className="fw-bold text-danger">{props.title}</span>
       </Col>
-      <Col className="text-center">
+      <Col className="">
         <p className="fw-bold text-dark my-auto h-100">${props.price}</p>
       </Col>
       <Col className="">

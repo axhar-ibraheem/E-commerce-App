@@ -19,7 +19,7 @@ const App = () => {
   const hideCartHandler = () => {
     setShowCart(false);
   };
-
+  const userLoggedIn = !!ctx.idToken;
   return (
     <>
       <Mainnav onShow={showCartHandler}></Mainnav>
@@ -31,10 +31,9 @@ const App = () => {
         <Route path="/home" exact>
           <Home></Home>
         </Route>
-
         <Route path="/products" exact>
-          {ctx.isLoggedIn && <Products></Products>}
-          {!ctx.isLoggedIn && <Redirect to="/auth"></Redirect>}
+          {userLoggedIn && <Products></Products>}
+          {!userLoggedIn && <Redirect to="/auth"></Redirect>}
         </Route>
 
         <Route path="/about">
@@ -46,7 +45,7 @@ const App = () => {
         <Route path="/auth">
           <Auth></Auth>
         </Route>
-        {ctx.isLoggedIn && (
+        {userLoggedIn && (
           <Route path="/products/:prodId">
             <ProductDetail></ProductDetail>
           </Route>

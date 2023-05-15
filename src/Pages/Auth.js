@@ -10,6 +10,7 @@ const Auth = () => {
   const [signIn, setSignIn] = useState(true);
   const ctx = useContext(ProdContext);
   const history = useHistory();
+
   const onClickHandler = () => {
     setSignIn(!signIn);
   };
@@ -57,7 +58,7 @@ const Auth = () => {
       const data = await response.json();
 
       if (response.ok) {
-        ctx.login(data.idToken);
+        ctx.login(data.idToken, data.email);
         history.replace("/products");
       } else {
         const errorMessage = data.error.message;
@@ -74,7 +75,7 @@ const Auth = () => {
     <Container>
       <Row className="justify-content-center pt-5">
         <Col md={5}>
-          <Form onSubmit={onSubmitHandler} className="border p-4 shadow">
+          <Form onSubmit={onSubmitHandler} className=" p-4 shadow">
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="fw-bold">Email address</Form.Label>
               <Form.Control

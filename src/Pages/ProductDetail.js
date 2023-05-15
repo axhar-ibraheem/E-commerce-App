@@ -104,11 +104,35 @@ const ProductDetail = () => {
   const [item] = filteredArray;
 
   const ctx = useContext(ProdContext);
-
-  const placeOrderHandler = () => {
-    ctx.addToCart({
-      ...item,
-    });
+  const useremail = ctx.email.replace(/[@.]/g, "");
+  const onClickHandler = async () => {
+    const response = await fetch(
+      `https://crudcrud.com/api/${ctx.crudApiEndPoint}/cart${useremail}`,
+      {
+        method: "POST",
+        cors: "no-cors",
+        body: JSON.stringify({
+          title: item.title,
+          price: item.price,
+          quantity: item.quantity,
+          id: item.id,
+          image: item.image,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    if (response.ok) {
+      console.log(data);
+      ctx.addToCart({
+        ...data,
+      });
+    } else {
+      const error = data.error.message;
+      console.log(error);
+    }
   };
 
   return (
@@ -160,7 +184,7 @@ const ProductDetail = () => {
                 </div>
                 <div className=" mt-3">
                   <Button
-                    onClick={placeOrderHandler}
+                    onClick={onClickHandler}
                     className="px-4 fw-bold btn-info"
                   >
                     Add To Cart

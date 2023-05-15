@@ -25,38 +25,43 @@ const Cart = (props) => {
           Your Cart <i className="bi bi-cart4 text-warning"></i>
         </Card.Header>
 
-        <Row className="mb-3 justify-content-center">
+        <Row className="mb-3 ">
           <Col className="">
-            <h5 className="text-center fw-bold">Item</h5>
+            <h5 className=" fw-bold">Product</h5>
           </Col>
 
           <Col>
-            <h5 className=" text-center fw-bold">Price</h5>
+            <h5 className=" fw-bold">Price</h5>
           </Col>
           <Col>
             <h5 className="fw-bold">Quantity</h5>
           </Col>
         </Row>
 
-        {ctx.products.map((item) => (
-          <CartItems
-            title={item.title}
-            price={item.price}
-            quantity={item.quantity}
-            image={item.image}
-            id={item.id}
-            key={item.id}
-          />
-        ))}
+        {!!ctx.idToken ? (
+          ctx.products.map((item) => (
+            <CartItems
+              title={item.title}
+              price={item.price}
+              quantity={item.quantity}
+              id={item.id}
+              key={item._id}
+            />
+          ))
+        ) : (
+          <div className="text-center">
+            <span>Please login to see what is in your cart</span>
+          </div>
+        )}
 
         <div className=" d-flex mt-4">
           <h5 className="fw-bold ">Total Amount</h5>{" "}
           <h5 className="fw-bold ms-auto me-2">
-            ${ctx.totalAmount.toFixed(2)}
+            ${!!ctx.idToken ? ctx.totalAmount.toFixed(2) : 0}
           </h5>
         </div>
         <div className="text-center">
-          {ctx.products.length > 0 ? (
+          {ctx.products.length > 0 && !!ctx.idToken ? (
             <Button
               onClick={() => alert("Your order is Placed")}
               variant="info"

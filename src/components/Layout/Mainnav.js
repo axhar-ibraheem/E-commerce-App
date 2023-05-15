@@ -1,17 +1,40 @@
-import { Link, useHistory } from "react-router-dom";
-import { Navbar, Container, Nav, Button, Modal, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import ProdContext from "../../store/prodContext";
-import { useContext, useState, useRef } from "react";
+import { useContext, useEffect } from "react";
 
 const Mainnav = (props) => {
   const ctx = useContext(ProdContext);
-
-  const history = useHistory();
   const prodQuantity = ctx.products.length;
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  let useremail;
+  if (ctx.email) {
+    useremail = ctx.email.replace(/[@.]/g, "");
+  }
+
+  const onClickHandler = () => {
+    props.onShow();
+  };
+
+  useEffect(() => {
+    async function fetchCartItems() {
+      const response = await fetch(
+        `https://crudcrud.com/api/${ctx.crudApiEndPoint}/cart${useremail}`,
+        {
+          method: "GET",
+        }
+      );
+      const data = await response.json();
+      if (response.ok) {
+        data.map((item) => ctx.addToCart({ ...item }));
+      } else {
+        const error = data.error.message;
+        alert(error);
+      }
+    }
+
+    fetchCartItems();
+  }, [useremail]);
 
   return (
     <>
@@ -38,7 +61,7 @@ const Mainnav = (props) => {
             </Nav>
           </Navbar.Collapse>
           <div className="d-flex" to="/auth">
-            {ctx.isLoggedIn ? (
+            {!!ctx.idToken ? (
               <Button
                 onClick={ctx.logout}
                 variant="outline-info"
@@ -58,11 +81,11 @@ const Mainnav = (props) => {
             )}
 
             <Button
-              onClick={props.onShow}
+              onClick={onClickHandler}
               variant="warning"
               className="ms-4 px-4 fw-bolder text-dark rounded-pill"
             >
-              Cart {prodQuantity}
+              Cart {!!ctx.idToken ? prodQuantity : 0}
             </Button>
           </div>
         </Container>

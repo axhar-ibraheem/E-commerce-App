@@ -27,7 +27,7 @@ import item1 from "../assets/images/image-1.jpg";
 import item2 from "../assets/images/image-2.jpg";
 import item3 from "../assets/images/image-3.jpg";
 import item4 from "../assets/images/image-4.jpg";
-import { Fragment, useContext } from "react";
+import { useContext } from "react";
 import ProdContext from "../store/prodContext";
 
 const productsArr = [
@@ -100,100 +100,73 @@ const productsArr = [
 
 const ProductDetail = () => {
   const { prodId } = useParams();
-  const filteredArray = productsArr.filter((item) => item.id === +prodId);
-  const [item] = filteredArray;
-
+  const item = productsArr.find((item) => item.id === +prodId);
   const ctx = useContext(ProdContext);
-  const useremail = ctx.email.replace(/[@.]/g, "");
-  const onClickHandler = async () => {
-    const response = await fetch(
-      `https://crudcrud.com/api/${ctx.crudApiEndPoint}/cart${useremail}`,
-      {
-        method: "POST",
-        cors: "no-cors",
-        body: JSON.stringify({
-          title: item.title,
-          price: item.price,
-          quantity: item.quantity,
-          id: item.id,
-          image: item.image,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    if (response.ok) {
-      console.log(data);
-      ctx.addToCart({
-        ...data,
-      });
-    } else {
-      const error = data.error.message;
-      console.log(error);
-    }
+
+  const onClickHandler = () => {
+    ctx.addToCart({
+      title: item.title,
+      price: item.price,
+      quantity: item.quantity,
+      id: item.id,
+    });
   };
 
   return (
     <section>
       <Container>
         <Row className="p-5">
-          {filteredArray.map((item) => (
-            <Fragment key={item.id}>
-              <Col md="5">
-                <Carousel className="border ">
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100"
-                      src={item.imageUrl.image1}
-                      alt="First slide"
-                    />
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100"
-                      src={item.imageUrl.image2}
-                      alt="Second slide"
-                    />
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100"
-                      src={item.imageUrl.image3}
-                      alt="Third slide"
-                    />
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100"
-                      src={item.imageUrl.image4}
-                      alt="Third slide"
-                    />
-                  </Carousel.Item>
-                </Carousel>
-              </Col>
-              <Col md="5">
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Explicabo quod deleniti quia laboriosam aspernatur
-                    doloremque debitis natus quo repudiandae expedita.
-                  </p>
-                </div>
-                <div className=" mt-3">
-                  <Button
-                    onClick={onClickHandler}
-                    className="px-4 fw-bold btn-info"
-                  >
-                    Add To Cart
-                  </Button>
-                  <span className="fs-4 fw-bold ms-4">${item.price}</span>
-                </div>
-              </Col>
-            </Fragment>
-          ))}
+          <Col md="5">
+            <Carousel className="border ">
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={item.imageUrl.image1}
+                  alt="First slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={item.imageUrl.image2}
+                  alt="Second slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={item.imageUrl.image3}
+                  alt="Third slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={item.imageUrl.image4}
+                  alt="Third slide"
+                />
+              </Carousel.Item>
+            </Carousel>
+          </Col>
+          <Col md="5">
+            <div>
+              <h3>{item.title}</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Explicabo quod deleniti quia laboriosam aspernatur doloremque
+                debitis natus quo repudiandae expedita.
+              </p>
+            </div>
+            <div className=" mt-3">
+              <Button
+                onClick={onClickHandler}
+                className="px-4 fw-bold btn-info"
+              >
+                Add To Cart
+              </Button>
+              <span className="fs-4 fw-bold ms-4">${item.price}</span>
+            </div>
+          </Col>
 
           <Col md={7} className="py-4">
             <ListGroup className="">

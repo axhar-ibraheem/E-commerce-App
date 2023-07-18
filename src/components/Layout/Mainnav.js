@@ -9,7 +9,7 @@ const Mainnav = (props) => {
 
   let useremail;
   if (ctx.email) {
-    useremail = ctx.email.replace(/[@.]/g, "");
+    useremail = ctx.email.replace(/[.]/g, "");
   }
 
   const onClickHandler = () => {
@@ -19,20 +19,16 @@ const Mainnav = (props) => {
   useEffect(() => {
     async function fetchCartItems() {
       const response = await fetch(
-        `https://crudcrud.com/api/${ctx.crudApiEndPoint}/cart${useremail}`,
-        {
-          method: "GET",
-        }
+        `https://ecommerce-app-a6739-default-rtdb.firebaseio.com/cart${useremail}.json` 
       );
       const data = await response.json();
       if (response.ok) {
-        data.map((item) => ctx.addToCart({ ...item }));
+        ctx.replaceCart(data)
       } else {
         const error = data.error.message;
         alert(error);
       }
-    }
-
+    } 
     fetchCartItems();
   }, [useremail]);
 
@@ -85,7 +81,7 @@ const Mainnav = (props) => {
               variant="warning"
               className="ms-4 px-4 fw-bolder text-dark rounded-pill"
             >
-              Cart {!!ctx.idToken ? prodQuantity : 0}
+                Cart {!!ctx.idToken ? <span className="text-danger fs-6">{prodQuantity}</span>  : 0}
             </Button>
           </div>
         </Container>

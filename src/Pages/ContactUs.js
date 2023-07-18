@@ -37,7 +37,7 @@ const ContactUs = () => {
     <>
       <section>
         <Container className="py-5">
-          <Row className="justify-content-center mx-2 mx-md-0  ">
+          <Row className="justify-content-center mx-2 mx-md-0 ">
             <div className="text-center mb-4">
               <h1 className="fw-bold">
                 Contact <span className="text-info">Us</span>{" "}
@@ -45,9 +45,9 @@ const ContactUs = () => {
             </div>
             <Col
               lg="4"
-              className=" bg-gradient bg-info ps-4 py-5 rounded-start"
+              className="bg-gradient bg-info ps-4 py-5"
             >
-              <div className="">
+              <div>
                 <h3 className="fw-bold">Contact Information</h3>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem
@@ -68,7 +68,7 @@ const ContactUs = () => {
                 <span>Old Plaza, Palladium Street, New Delhi.</span>
               </div>
             </Col>
-            <Col lg="5" className="py-5 shadow">
+            <Col lg="5" className="py-5 shadow-lg">
               <Form onSubmit={onSubmitHandler}>
                 <Form.Group className="mb-3" controlId="formBasicUsername">
                   <Form.Label className="fw-bold">Name</Form.Label>
@@ -76,6 +76,7 @@ const ContactUs = () => {
                     ref={nameRef}
                     type="text"
                     placeholder="Enter Name"
+                    required
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -84,6 +85,7 @@ const ContactUs = () => {
                     ref={emailRef}
                     type="email"
                     placeholder="Enter email"
+                    required
                   />
                 </Form.Group>
 
@@ -93,6 +95,7 @@ const ContactUs = () => {
                     ref={phoneNoRef}
                     type="number"
                     placeholder="Phone Number"
+                    required
                   />
                 </Form.Group>
                 <Button

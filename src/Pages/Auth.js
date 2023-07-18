@@ -72,57 +72,50 @@ const Auth = () => {
   };
 
   return (
-    <Container>
-      <Row className="justify-content-center pt-5">
-        <Col md={5}>
-          <Form onSubmit={onSubmitHandler} className=" p-4 shadow">
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label className="fw-bold">Email address</Form.Label>
-              <Form.Control
-                ref={emailRef}
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.password">
-              <Form.Label className="fw-bold">Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} />
-            </Form.Group>
-            {!signIn && (
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.confirmPassword"
-              >
-                <Form.Label className="fw-bold">Confirm Password</Form.Label>
-                <Form.Control type="password" ref={confirmPassRef} />
-              </Form.Group>
-            )}
-            <div className="d-flex flex-column w-100 ">
-              {signIn ? (
-                <Button type="submit" variant="success">
-                  {isLoading ? content : "Sign In"}
-                </Button>
-              ) : (
-                <Button type="submit" variant="info" className="fw-bold">
-                  {" "}
-                  {isLoading ? content : "Sign Up"}
-                </Button>
-              )}
+    <Container className="py-5">
+      <Form style={{maxWidth: "35rem"}} onSubmit={onSubmitHandler} className="p-4 mx-auto mt-5 shadow">
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label className="fw-bold">Email address</Form.Label>
+          <Form.Control
+            ref={emailRef}
+            type="email"
+            placeholder="name@example.com"
+            autoFocus
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.password">
+          <Form.Label className="fw-bold">Password</Form.Label>
+          <Form.Control type="password" ref={passwordRef} />
+        </Form.Group>
+        {!signIn && (
+          <Form.Group className="mb-3" controlId="exampleForm.confirmPassword">
+            <Form.Label className="fw-bold">Confirm Password</Form.Label>
+            <Form.Control type="password" ref={confirmPassRef} />
+          </Form.Group>
+        )}
+        <div className="d-flex flex-column w-100 ">
+          {signIn ? (
+            <Button type="submit" variant="success">
+              {isLoading ? content : "Sign In"}
+            </Button>
+          ) : (
+            <Button type="submit" variant="info" className="fw-bold">
+              {" "}
+              {isLoading ? content : "Sign Up"}
+            </Button>
+          )}
 
-              <a
-                onClick={onClickHandler}
-                style={{ cursor: "pointer" }}
-                className="mx-auto pt-3"
-              >
-                {signIn
-                  ? "First Time, then Sign Up"
-                  : "Already a User, then Sign In"}
-              </a>
-            </div>
-          </Form>
-        </Col>
-      </Row>
+          <a
+            onClick={onClickHandler}
+            style={{ cursor: "pointer" }}
+            className="mx-auto pt-3"
+          >
+            {signIn
+              ? "First Time, then Sign Up"
+              : "Already a User, then Sign In"}
+          </a>
+        </div>
+      </Form>
     </Container>
   );
 };

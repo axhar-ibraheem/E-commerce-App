@@ -4,13 +4,14 @@ const ProdContext = React.createContext({
   products: [],
   totalAmount: 0,
   idToken: "",
+  changed: "",
   login: () => {},
   logout: () => {},
   addToCart: () => {},
   removeFromCart: () => {},
-  apiKey: "AIzaSyBezG9y2vzN3ZEoEkEMYo68vi3GYFkJ99Q",
+  replaceCart: ()=>{},
+  apiKey: "",
   email: "",
-  crudApiEndPoint: "",
 });
 
 export default ProdContext;

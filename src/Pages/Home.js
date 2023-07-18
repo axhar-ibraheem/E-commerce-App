@@ -1,47 +1,6 @@
-import Footer from "../components/Layout/Footer";
-import { BsPlayCircle } from "react-icons/bs";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import backGroundImage from "../assets/images/home.jpg";
 import { Link } from "react-router-dom";
-
-const tourItems = [
-  {
-    id: "m1",
-    tourDate: "JUL 16",
-    tourPlace: "DETROIT, MI",
-    tourDetails: "DTE ENERGY MUSIC THEATRE",
-  },
-  {
-    id: "m2",
-    tourDate: " JUL 19",
-    tourPlace: "TORONTO,ON",
-    tourDetails: "BUDWEISER STAGE",
-  },
-  {
-    id: "m3",
-    tourDate: "JUL 22",
-    tourPlace: "BRISTOW, VA",
-    tourDetails: "JIGGY LUBE LIVE",
-  },
-  {
-    id: "m4",
-    tourDate: "JUL 15",
-    tourPlace: "PHOENIX, AZ",
-    tourDetails: "AK-CHIN PAVILION",
-  },
-  {
-    id: "m5",
-    tourDate: "JUL 06",
-    tourPlace: "LAS VEGAS, NV",
-    tourDetails: "T-MOBILE ARENA",
-  },
-  {
-    id: "m6",
-    tourDate: "JUL 17",
-    tourPlace: "CONCORD, CA",
-    tourDetails: "CONCORD PAVILION",
-  },
-];
 
 const Home = () => {
   return (
